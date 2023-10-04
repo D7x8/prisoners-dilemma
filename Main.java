@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class Main
 {
     public Scanner inputStream = new Scanner(System.in);
-
+    public boolean playerOneCooperates;
+    public boolean playerTwoCooperates;
     /**
      * Constructor for objects of class Main
      */
@@ -46,4 +47,30 @@ public class Main
         if(input.toLowerCase().equals("p")) startGamePlayerOne();
         else return;
     }
+
+public void startGamePlayerOne(){
+    System.out.print('\u000C');
+    System.out.println("Player 1:");
+    System.out.println("Press c to cooperate\nOr press d to defect.");
+
+    String input = getString();
+
+    if(input.toLowerCase().equals("c")) playerOneCooperates = true;
+    else if(input.toLowerCase().equals("d")) playerOneCooperates = false;
+    else return;
+
+    System.out.print('\u000C');
+    startGamePlayerTwo();
+}
+public void startGamePlayerTwo(){
+    System.out.println("Player 2:");
+    System.out.println("Press c to cooperate\nOr press d to defect.");
+
+    String input = getString();
+
+    if(input.toLowerCase().equals("c")) playerTwoCooperates = true;
+    else if(input.toLowerCase().equals("d")) playerTwoCooperates = false;
+    else return;
+    System.out.print('\u000C');
+}
 }

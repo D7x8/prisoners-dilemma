@@ -20,24 +20,32 @@ public class Main
     {
         welcome();
     }
-    
+
+    /*
+     * This method prints a welcome message and menu to start the game or view instructions.
+     */
     public void welcome(){
-        // This is the welcmome message/instructions.
-        //System.out.println("");
         System.out.println("WHAT IS THIS?\nThis is a Prisoners dilemma game that I made in java.\nFor infomation on how to play, press i\nTo play the game, press p");
 
         String input = getString();
 
         if(input.toLowerCase().equals("i")) instructions();
-        else if(input.toLowerCase().equals("p")) startGamePlayerOne();
+        else if(input.toLowerCase().equals("p")) startGame();
         else return;
     }
     
+    /*
+     * Gets String from the user.
+     */
     public String getString(){
         String stringGet;
         stringGet = inputStream.nextLine();
         return stringGet;
     }
+
+    /*
+     * Prints instructions and start game menu.
+     */
     public void instructions(){
         System.out.println("How to play:");
         System.out.println("There are 2 prisoners who have been accused of a crime and have been taken in for questioning.\nBoth Prisoners are put in different rooms where they are questioned.\nThey both have the option to cooperate with one another or defect.\nIf both prisoners cooperate then they will get 1 year in prison.\nIf they both defect then they both get 3 years in prison.\nIf one cooperates and the other defects then the prisoner who defected will get off scot free but the other prisoner will get 5 years in prison.\n");
@@ -45,13 +53,18 @@ public class Main
 
         String input = getString();
 
-        if(input.toLowerCase().equals("p")) startGamePlayerOne();
+        if(input.toLowerCase().equals("p")) startGame();
         else return;
     }
-    public void startGamePlayerOne(){
+
+    /*
+     * Prints player options and takes players choices.
+     */
+    public void startGame(){
+        //Player one
         System.out.print('\u000C');
         System.out.println("Player 1:");
-        System.out.println("Press c to cooperate\nOr press d to defect.");
+        System.out.println("Press c to cooperate\nor press d to defect.");
 
         String input = getString();
 
@@ -60,21 +73,23 @@ public class Main
         else return;
 
         System.out.print('\u000C');
-        startGamePlayerTwo();
-    }
-    public void startGamePlayerTwo(){
+
+        //Player two
         System.out.println("Player 2:");
-        System.out.println("Press c to cooperate\nOr press d to defect.");
+        System.out.println("Press c to cooperate\nor press d to defect.");
 
-        String input = getString();
+        String input2 = getString();
 
-        if(input.toLowerCase().equals("c")) playerTwoCooperates = true;
-        else if(input.toLowerCase().equals("d")) playerTwoCooperates = false;
+        if(input2.toLowerCase().equals("c")) playerTwoCooperates = true;
+        else if(input2.toLowerCase().equals("d")) playerTwoCooperates = false;
         else return;
         System.out.print('\u000C');
 
         calculateScore();
     }
+    /*
+     * Calculates the prison sentence based on what options the users picked.
+     */
     public void calculateScore(){
         if(playerOneCooperates && playerTwoCooperates){
             playerOneScore++;
@@ -93,8 +108,8 @@ public class Main
         System.out.println("Player 1 gets " +playerOneScore+" years");
         System.out.println("Player 2 gets " +playerTwoScore+" years");
 
-        }
+    }
     public void rounds(){
-
+        
     }
 }

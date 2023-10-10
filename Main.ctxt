@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Main
+comment1.params=
+comment1.target=Main()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Main\r\n
+comment2.params=
+comment2.target=void\ welcome()
+comment2.text=\r\n\ This\ method\ prints\ a\ welcome\ message\ and\ menu\ to\ start\ the\ game\ or\ view\ instructions.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getString()
+comment3.text=\r\n\ Gets\ String\ from\ the\ user.\r\n
+comment4.params=
+comment4.target=void\ instructions()
+comment4.text=\r\n\ Prints\ instructions\ and\ start\ game\ menu.\r\n
+comment5.params=
+comment5.target=void\ startGame()
+comment5.text=\r\n\ Prints\ player\ options\ and\ takes\ players\ choices.\r\n
+comment6.params=
+comment6.target=void\ round()
+comment7.params=playerOneCooperate\ playerTwoCooperate
+comment7.target=void\ calculateScore(boolean,\ boolean)
+comment7.text=\r\n\ Calculates\ the\ prison\ sentence\ based\ on\ what\ options\ the\ users\ picked.\r\n
+comment8.params=
+comment8.target=void\ rounds()
+numComments=9

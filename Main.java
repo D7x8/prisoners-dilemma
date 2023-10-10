@@ -58,11 +58,38 @@ public class Main
     }
 
     /*
-     * Prints player options and takes players choices.
+     * Iterates rounds until a player loses and then prints the result
      */
     public void startGame(){
-        //Player one
         System.out.print('\u000C');
+        
+        //Iterates rounds until losing score is met
+        boolean continueRounds = true;
+        while(continueRounds){
+            round();
+            if(playerOneScore >= 15 || playerTwoScore >= 15){
+                continueRounds = false;
+            }  
+        }
+
+        //After losting score is met the highest value will be specified.
+        System.out.println("GAME OVER!!");
+        if(playerOneScore < playerTwoScore){
+            System.out.println("Player one wins!");
+        }
+        else if(playerOneScore > playerTwoScore){
+            System.out.println("Player 2 wins!");
+        }
+        else{
+            System.out.println("Tie!");
+        }
+    }
+
+    /*
+     * A single round of the game. Gives player options to cooperate and defect and takes input
+     */
+    public void round(){
+        //Player one
         System.out.println("Player 1:");
         System.out.println("Press c to cooperate\nor press d to defect.");
 
@@ -85,31 +112,27 @@ public class Main
         else return;
         System.out.print('\u000C');
 
-        calculateScore();
+        calculateScore(playerOneCooperates, playerTwoCooperates);
     }
     /*
      * Calculates the prison sentence based on what options the users picked.
      */
-    public void calculateScore(){
-        if(playerOneCooperates && playerTwoCooperates){
+    public void calculateScore(boolean playerOneCooperate, boolean playerTwoCooperate){
+        if(playerOneCooperate && playerTwoCooperate){
             playerOneScore++;
             playerTwoScore++;
         }
-        if(playerOneCooperates && !playerTwoCooperates){
+        if(playerOneCooperate && !playerTwoCooperate){
             playerOneScore += 5;
         }
-        if(!playerOneCooperates && playerTwoCooperates){
+        if(!playerOneCooperate && playerTwoCooperate){
             playerTwoScore += 5;
         }
-        if(!playerOneCooperates && !playerTwoCooperates){
+        if(!playerOneCooperate && !playerTwoCooperate){
             playerOneScore += 3;
             playerTwoScore += 3;
         }
-        System.out.println("Player 1 gets " +playerOneScore+" years");
         System.out.println("Player 2 gets " +playerTwoScore+" years");
-
-    }
-    public void rounds(){
-        
+        System.out.println("Player 1 gets " +playerOneScore+" years");
     }
 }

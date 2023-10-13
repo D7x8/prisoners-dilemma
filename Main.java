@@ -1,9 +1,7 @@
 
 /**
- * Write a description of class Main here.
- *
- * @author (Main)
- * @version (In development as of 14/9/2023)
+ * @author (Dylan Taylor)
+ * @version (Started development on 14/9/2023) (Complete as of 12/10/2023)
  */
 import java.util.Scanner;
 public class Main
@@ -11,11 +9,18 @@ public class Main
     public Scanner inputStream = new Scanner(System.in);
     public int playerOneScore = 0;
     public int playerTwoScore = 0;
+    public int rounds = 0;
     public boolean playerOneCooperates;
     public boolean playerTwoCooperates;
+    public boolean[] playerOneHistory = new boolean[15];
+    public boolean[] playerTwoHistory = new boolean[15];
     /**
      * Constructor for objects of class Main
      */
+
+    public static void main(String[] args){
+        new Main();
+    }
     public Main()
     {
         welcome();
@@ -63,14 +68,19 @@ public class Main
     public void startGame(){
         System.out.print('\u000C');
         
+        int count = 0;
         //Iterates rounds until losing score is met
         boolean continueRounds = true;
         while(continueRounds){
             round();
+            playerOneHistory[count] = playerOneCooperates;
+            playerTwoHistory[count] = playerTwoCooperates;
             if(playerOneScore >= 15 || playerTwoScore >= 15){
                 continueRounds = false;
             }  
+            count++;
         }
+        rounds = count;
 
         //After losting score is met the highest value will be specified.
         System.out.println("GAME OVER!!");
@@ -83,6 +93,12 @@ public class Main
         else{
             System.out.println("Tie!");
         }
+        System.out.println("Press H to view round history.");
+
+        String input = getString();
+
+        if(input.toLowerCase().equals("h")) printHistory();
+
     }
 
     /*
@@ -112,6 +128,7 @@ public class Main
         else return;
         System.out.print('\u000C');
 
+        
         calculateScore(playerOneCooperates, playerTwoCooperates);
     }
     /*
@@ -134,5 +151,25 @@ public class Main
         }
         System.out.println("Player 2 gets " +playerTwoScore+" years");
         System.out.println("Player 1 gets " +playerOneScore+" years");
+    }
+    public void printHistory(){
+        for(int i = 0; i < rounds; i++){
+            boolean playerOne = playerOneHistory[i];
+            boolean playerTwo = playerTwoHistory[i];
+
+            if(playerOne){
+                System.out.println("Player 1 cooperated in round "+ (i + 1));
+            }
+            if(!playerOne){
+                System.out.println("Player 1 defected in round "+ (i + 1));
+            }
+
+            if(playerTwo){
+                System.out.println("Player 2 cooperated in round "+ (i + 1));
+            }
+            if(!playerTwo){
+                System.out.println("Player 2 defected in round "+ (i + 1));
+            }
+        }
     }
 }

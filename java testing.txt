@@ -1,5 +1,0 @@
-On first test the code did not work because the method startGamePlayerOne() did not exsist which the current code tried to call, after removing it the code worked as expected
-
-On the second test after I had added in 2 players, the code worked as expected.
-
-On the third test after I added the cooperation options and sentance outcomes, all went as expected.
